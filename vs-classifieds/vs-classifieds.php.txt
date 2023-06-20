@@ -1,0 +1,106 @@
+<?php
+/**
+ * Plugin Name:     Vs Classifieds
+ * Plugin URI:      PLUGIN SITE HERE
+ * Description:     PLUGIN DESCRIPTION HERE
+ * Author:          Ray St. Onge
+ * Author URI:      YOUR SITE HERE
+ * Text Domain:     vs-classifieds
+ * Domain Path:     /languages
+ * Version:         0.1.0
+ *
+ * @package         Vs_Classifieds
+ */
+
+// Your code starts here.
+add_shortcode('allClassifiedsPretty','getAllClassifiedsPretty');
+
+function getAllClassifiedsPretty() {
+?>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clamp-js/0.7.0/clamp.min.js" integrity="sha512-Zf7q41OZ49XVIFrkbCVLkBEklVxQv4sVdMGnCwL9bfuCfA862QmAJSU61yrcrMwze7Ij7oUXpQVoUXmftBfk0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  $(document).ready(function(){
+    var clampable = $( ".classified" );
+    var arrayLength = clampable.length;
+    for (var i = 0; i < arrayLength; i++) {
+      $clamp(clampable[i], {
+        clamp:11
+      });
+    }
+    $( "#comments" ).remove();
+  });
+</script>
+<div class="classifiedWrapperOuter">
+<?php
+  displayHeader();
+  ?>
+  <div class="classifiedWrapper">
+  <?php
+  $type='classified';
+  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+  $args = array(
+    'posts_per_page' => 24,
+    'paged' => $paged,
+    'post_status' => 'publish',
+    'post_type' => $type
+  );
+  $cpt_query = new WP_Query($args);
+  if ($cpt_query->have_posts())
+  {
+    while ($cpt_query->have_posts())
+    {
+      $cpt_query->the_post();
+      if (strlen(get_the_content())){
+   $className="classLinerAd";
+ } else {
+   $className ="classDisplayAd";
+ }
+ ?>
+
+ <div class="<?php echo $className;?>">
+   <a class="classified" href="<?php echo the_permalink();?>">
+     <?php
+ if (strlen(get_the_content()))
+ {
+   echo get_the_content();
+ }
+ else
+ {
+   //echo "This is a display ad. Need the image<br>";
+   //the_post_thumbnail( array(150, 100), ['class' => 'prettyThumbnail', 'style' => 'float:left; margin-right: 25px;'] );
+   echo get_the_post_thumbnail(get_the_ID(),'medium');
+ }
+ ?>
+   </a>
+   <br/>
+ </div>
+
+ <?php
+    }
+  }
+?>
+</div>
+</div>
+<nav>
+    <div>
+      <div class = "classifiedsPreviousButton" ><?php previous_posts_link( 'Back...', $cpt_query->max_num_pages) ?></div>
+      <div class = "classifiedsNextButton"><?php next_posts_link( 'More...', $cpt_query->max_num_pages) ?></div>
+    </div>
+</nav>
+
+
+
+<?php
+
+}
+function displayHeader(){
+?>
+<div class = 'classifiedIntructions'>
+  <p>To place a Classified ad, please call the office, 207-594-4401, 207-338-3333, 207-596-0055 or email to&nbsp;classifieds@mainestaymedia.com </p>
+  <p>$10.00 per week for the first 15 words. $0.50 per week for each additional word.</p>
+  <p>Ads submitted and scheduled before&nbsp;<strong>10:30AM FRIDAY</strong>&nbsp;will be included in the Tuesday edition of The Free Press and Thursday edition of The Courier-Gazette, The Camden Herald, and The Republican Journal.</p>
+  <p>Ads submitted and scheduled before&nbsp;<strong>5PM MONDAY</strong>&nbsp;will be included in the Thursday edition of The&nbsp;Courier-Gazette, The&nbsp;Camden&nbsp;Herald, and The&nbsp;Republican&nbsp;Journal and the following Tuesday edition of The Free Press.</p>
+</div>
+<?php
+}
