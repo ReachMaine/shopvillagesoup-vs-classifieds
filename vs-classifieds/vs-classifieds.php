@@ -12,6 +12,16 @@
 
 // Your code starts here.
 
+//Register style on initalization
+add_action('init', 'register_classifieds_style');
+function register_classifieds_style() {
+  wp_register_style( 'classifieds_style', plugins_url('/css/classifieds.css', __FILE__), false, '1.0.0', 'all');
+}
+add_action('wp_enqueue_scripts', 'enqueue_classifieds_style');
+function enqueue_classifieds_style(){
+  wp_enqueue_style( 'classifieds_style' );
+}
+
 // Add a menu for our option page
 add_action( 'admin_menu', 'vs_classified_plugin_add_settings_menu' );
 
@@ -359,7 +369,7 @@ function getClassifiedsPretty($args){
 </script>
 <div class="classifiedWrapperOuter">
 <?php
-  displayHeader();
+
  // print_r($args);
   ?>
   <div class="classifiedWrapper">
@@ -399,11 +409,13 @@ function getClassifiedsPretty($args){
  <?php
     }
   }
+  //Display Header at the bottom - 6/23/23
+  displayHeader();
 ?>
 </div>
 </div>
 <nav>
-    <div>
+    <div id="classifiedsNavButtons">
       <div class = "classifiedsPreviousButton" ><?php previous_posts_link( 'Back...', $cpt_query->max_num_pages) ?></div>
       <div class = "classifiedsNextButton"><?php next_posts_link( 'More...', $cpt_query->max_num_pages) ?></div>
     </div>

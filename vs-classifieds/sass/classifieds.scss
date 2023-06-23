@@ -1,0 +1,101 @@
+//A collection of relevant "Custom Color" variables
+$cc_blue : #015aac;
+$cc_dark_blue : #04378e;
+$cc_link_color : #04378e;
+$cc_vs_orange : #f18f00;
+$cc_light_grey : #ddd;
+$cc_dark_grey : #565656;
+
+.classifiedWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+//.classLinerAd - Classifieds made completely out of text and border
+.classLinerAd {
+	height:300px;
+	width: 300px;
+	margin-bottom: 30px;
+	padding: 15px;
+	border: 1px solid $cc_light_grey;
+	a {
+		color: black;
+		text-decoration: none !important;
+	}
+}
+//.classDisplayAd - Classifides made out of an embeded file
+.classDisplayAd {
+	height: 300px;
+	width: 300px;
+	margin-bottom: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+.classifiedIntructions {
+	background-color: $cc_blue;
+	color: white;
+	text-align: center;
+	padding: 18px;
+	margin: 15px 42px;
+}
+
+//Classified 'Next' Button on right side
+.classifiedsNextButton {
+	margin-left: auto;
+	margin-right:42px;
+	a {
+		background: $cc_dark_grey;
+		border:1px solid white;
+		cursor:pointer;
+		color:#ffffff;
+		font-size:16px;
+		padding:10px 17px;
+		text-decoration:none;
+	}
+	:hover {
+		background: $cc_vs_orange;
+		border-color: $cc_vs_orange;
+	}
+	:active {
+		position: relative;
+		top: 1px;
+	}
+}
+
+//Classified 'Back...' Button on left side
+.classifiedsPreviousButton {
+	margin-left:42px;
+	a {
+		background: $cc_dark_grey;
+		border:1px solid white;
+		cursor:pointer;
+		color:#ffffff;
+		font-size:16px;
+		padding:10px 17px;
+		text-decoration:none;
+	}
+	:hover {
+		background: $cc_vs_orange;
+		border-color: $cc_vs_orange;
+	}
+	:active {
+		position: relative;
+		top: 1px;
+	}
+}
+
+nav .classifiedsNextButton a, nav .classifiedsPreviousButton a {
+	text-decoration: none !important;
+	color: white;
+}
+
+.page-id-559 article {
+	margin-bottom: -42px;
+}
+
+#classifiedsNavButtons {
+	display: flex;
+	align-items: stretch;
+}
