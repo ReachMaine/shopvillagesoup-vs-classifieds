@@ -33,6 +33,7 @@ $cc_dark_grey : #565656;
 	justify-content: center;
 }
 
+/*
 .classifiedIntructions {
 	background-color: $cc_blue;
 	color: white;
@@ -40,13 +41,14 @@ $cc_dark_grey : #565656;
 	padding: 18px;
 	margin: 15px 42px;
 }
+*/
 
 //Classified 'Next' Button on right side
 .classifiedsNextButton {
 	margin-left: auto;
 	margin-right:42px;
 	a {
-		background: $cc_dark_grey;
+		background: $cc_blue;
 		border:1px solid white;
 		cursor:pointer;
 		color:#ffffff;
@@ -68,7 +70,7 @@ $cc_dark_grey : #565656;
 .classifiedsPreviousButton {
 	margin-left:42px;
 	a {
-		background: $cc_dark_grey;
+		background: $cc_blue;
 		border:1px solid white;
 		cursor:pointer;
 		color:#ffffff;

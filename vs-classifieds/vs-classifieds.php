@@ -375,18 +375,18 @@ function getClassifiedsPretty($args){
   <div class="classifiedWrapper">
   <?php
 
-  $cpt_query = new WP_Query($args);
-  if ($cpt_query->have_posts())
-  {
-    while ($cpt_query->have_posts())
-    {
-      $cpt_query->the_post();
-      if (strlen(get_the_content())){
-   $className="classLinerAd";
- } else {
-   $className ="classDisplayAd";
- }
- ?>
+      $cpt_query = new WP_Query($args);
+      if ($cpt_query->have_posts())
+      {
+        while ($cpt_query->have_posts())
+        {
+          $cpt_query->the_post();
+          if (strlen(get_the_content())){
+            $className="classLinerAd";
+          } else {
+            $className ="classDisplayAd";
+          }
+  ?>
 
  <div class="<?php echo $className;?>">
    <a class="classified" href="<?php echo the_permalink();?>">
@@ -416,12 +416,10 @@ function getClassifiedsPretty($args){
 </div>
 <nav>
     <div id="classifiedsNavButtons">
-      <div class = "classifiedsPreviousButton" ><?php previous_posts_link( 'Back...', $cpt_query->max_num_pages) ?></div>
-      <div class = "classifiedsNextButton"><?php next_posts_link( 'More...', $cpt_query->max_num_pages) ?></div>
+      <div class = "classifiedsPreviousButton" ><?php previous_posts_link( '&laquo; Back', $cpt_query->max_num_pages) ?></div>
+      <div class = "classifiedsNextButton"><?php next_posts_link( 'More &raquo;', $cpt_query->max_num_pages) ?></div>
     </div>
 </nav>
-
-
 
 <?php
 wp_reset_postdata();
@@ -434,24 +432,8 @@ $phone = $options['phone'];
 $rate = $options['rate'];
 $deadline = $options['deadline'];
 $additional = $options['additional'];
-
 ?>
-<div class = 'classifiedIntructions'>
-  <p><?php echo $phone;?></p>
-  <p><?php echo $rate;?></p>
- <!--
-  <p>Ads submitted and scheduled before&nbsp;<strong>10:30AM FRIDAY</strong>&nbsp;will be included in the Tuesday edition of The Free Press and Thursday edition of The Courier-Gazette, The Camden Herald, and The Republican Journal.</p>
- -->
-  <p><?php echo $deadline;?></p>
-  <?php
-  if (strlen($additional))
-  {
-    ?>
-      <p><strong><?php echo $additional;?></strong> </p>
-    <?php
-  }
-     ?>
-</div>
+
 <?php
 }
 function getClassifieds($args){
@@ -482,7 +464,7 @@ $htmlText=$htmlText.'
     {
       $cpt_query->the_post();
       if (strlen(get_the_content())){
-      $className="classLinerAd";
+        $className="classLinerAd";
      } else {
         $className ="classDisplayAd";
    }
