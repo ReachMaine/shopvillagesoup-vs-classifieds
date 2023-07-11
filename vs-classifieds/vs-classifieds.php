@@ -297,7 +297,10 @@ function getAllClassifiedsPretty() {
     'posts_per_page' => 24,
     'paged' => $paged,
     'post_status' => 'publish',
-    'post_type' => $type
+    'post_type' => $type,
+    'meta_key' => 'display_ad',
+    'orderby' => 'meta_value_num',
+    'order' => 'DESC'
   );
   return getClassifiedsPretty($args);
 }
