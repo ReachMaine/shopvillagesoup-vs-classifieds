@@ -14,7 +14,7 @@ $cc_dark_grey : #565656;
 
 //.classLinerAd - Classifieds made completely out of text and border
 .classLinerAd {
-	height:300px;
+	height:150px;
 	width: 300px;
 	margin-bottom: 30px;
 	padding: 15px;
@@ -22,6 +22,8 @@ $cc_dark_grey : #565656;
 	a {
 		color: black;
 		text-decoration: none !important;
+		overflow: hidden;
+		text-overflow: "-" !important;
 	}
 }
 //.classDisplayAd - Classifides made out of an embeded file
@@ -32,16 +34,6 @@ $cc_dark_grey : #565656;
 	display: flex;
 	justify-content: center;
 }
-
-/*
-.classifiedIntructions {
-	background-color: $cc_blue;
-	color: white;
-	text-align: center;
-	padding: 18px;
-	margin: 15px 42px;
-}
-*/
 
 //Classified 'Next' Button on right side
 .classifiedsNextButton {

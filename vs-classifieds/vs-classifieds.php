@@ -364,7 +364,7 @@ function getClassifiedsPretty($args){
     var arrayLength = clampable.length;
     for (var i = 0; i < arrayLength; i++) {
       $clamp(clampable[i], {
-        clamp:11
+        clamp:5
       });
     }
     $( "#comments" ).remove();
