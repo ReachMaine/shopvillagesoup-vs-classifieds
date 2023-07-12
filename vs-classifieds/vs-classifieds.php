@@ -100,27 +100,6 @@ function vs_classified_plugin_admin_init(){
         'vs_classified_plugin',
         'vs_classified_plugin_main'
     );
-
-    // Create our settings field for session
-    /*
-    add_settings_field(
-    	'vs_classified_plugin_phone',
-    	'Phone',
-        'vs_classified_plugin_setting_phone',
-        'vs_classified_plugin',
-        'vs_classified_plugin_main'
-    );
-    */
-    // Create our settings field for beast mode
-    /*
-    add_settings_field(
-      'vs_classified_plugin_display_results',
-      'Enable Display Results?',
-        'vs_classified_plugin_setting_display_results',
-        'vs_classified_plugin',
-        'vs_classified_plugin_main'
-    );
-    */
 }
 
 // Draw the section header
@@ -208,75 +187,45 @@ function vs_classified_plugin_validate_options( $input ) {
 
     return $valid;
 }
+
+//Yard Sales
 add_shortcode('classifiedsYardSales','getClassifiedsYardSales');
-
 function getClassifiedsYardSales() {
-  $type='classified';
-  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-  $args = array(
-    'posts_per_page' => 24,
-    'paged' => $paged,
-    'category_name' => '1335 Garage Sales',
-    //'category_in' => array(207,181,208,209,210),
-    'post_status' => 'publish',
-    'post_type' => $type
-  );
-  return getClassifiedsPretty($args);
+  $category = '1335 Garage Sales';
+
+  return getClassifiedsPretty($category);
 }
 
+//Public Notices
 add_shortcode('classifiedsPublicNotices','getClassifiedsPublicNotices');
-
 function getClassifiedsPublicNotices() {
-  $type='classified';
-  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-  $args = array(
-    'posts_per_page' => 24,
-    'paged' => $paged,
-    'category_name' => '1007 General Notices,1000 Public Notices,1001 Legal Notices',
-    //'category_in' => array(207,181,208,209,210),
-    'post_status' => 'publish',
-    'post_type' => $type
-  );
-  return getClassifiedsPretty($args);
+  $category = '1007 General Notices,1000 Public Notices,1001 Legal Notices';
+
+  return getClassifiedsPretty($category);
 }
 
+//Merchandise
 add_shortcode('classifiedsMerchandise','getClassifiedsMerchandise');
-
 function getClassifiedsMerchandise() {
-  $type='classified';
-  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-  $args = array(
-    'posts_per_page' => 24,
-    'paged' => $paged,
-    'category_name' => '1300 Antiques Collectibles,1307 Auctions,1312 Business Opportunities,1321 Craft Fairs,1340 General Merchandise,1350 Lawn and Garden,1375 Sports Exercise,1385 Wanted To Buy,1405 Boats Canoes Kayaks,1410 Camping Equipment,1420 Fishing Hunting Supply,1425 Hot Tubs Saunas Pools,1435 Skies Skates & Equip,1440 Snowmobiles & Access,1445 Sports Craft',
-    //'category_in' => array(207,181,208,209,210),
-    'post_status' => 'publish',
-    'post_type' => $type
-  );
-  return getClassifiedsPretty($args);
+  $category = '1300 Antiques Collectibles,1307 Auctions,1312 Business Opportunities,1321 Craft Fairs,1340 General Merchandise,1350 Lawn and Garden,1375 Sports Exercise,1385 Wanted To Buy,1405 Boats Canoes Kayaks,1410 Camping Equipment,1420 Fishing Hunting Supply,1425 Hot Tubs Saunas Pools,1435 Skies Skates & Equip,1440 Snowmobiles & Access,1445 Sports Craft';
+
+  return getClassifiedsPretty($category);
 }
 
+//Service Directory
 add_shortcode('classifiedsServiceDirectory','getClassifiedsServiceDirectory');
-
 function getClassifiedsServiceDirectory() {
-  $type='classified';
-  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-  $args = array(
-    'posts_per_page' => 24,
-    'paged' => $paged,
-    'category_name' => '5510 Books,5120 Carpentry & Remodeling,5130 Carpet & Flooring Serv,5140 Chimney Services,5150 Cleaning Service,5155 Oil Tanks,5156 Coal Oil Wood,5160 Computer Services,5170 Construction,5180 Contractors,5189 Driveways,5190 Drywall & Plastering,5195 Educational Services,5200 Electrician,5210 Excavation,5213 Exterior Cleaning,5220 Franchises,
+  $category = '5510 Books,5120 Carpentry & Remodeling,5130 Carpet & Flooring Serv,5140 Chimney Services,5150 Cleaning Service,5155 Oil Tanks,5156 Coal Oil Wood,5160 Computer Services,5170 Construction,5180 Contractors,5189 Driveways,5190 Drywall & Plastering,5195 Educational Services,5200 Electrician,5210 Excavation,5213 Exterior Cleaning,5220 Franchises,
     5228 Garage Doors,5230 General Services,5240 Handyperson,5250 Health Care Services,5260 Home Improvement,5270 HVAC,5271 Air Conditioners,5280 Insulation,5290 Landscaping,5292 Lawn & Yard Care,5300 Loam Sand Gravel,5310 Masonry Concrete Brick,5320 Moving Shipping Storage,5330 Painting Plaster Paper,5340 Paving & Seal Coating,5345 Plumbing,5350 Pool Services,
-    5356 Removal-Salvage,5358 Repair-Service,5360 Roofing Siding Gutters,5370 Rubbish Hauling,5373 Sealcating,5380 Snow Removal,5390 Tree Services, Professional Directory',
-    //'category_in' => array(207,181,208,209,210),
-    'post_status' => 'publish',
-    'post_type' => $type
-  );
-  return getClassifiedsPretty($args);
+    5356 Removal-Salvage,5358 Repair-Service,5360 Roofing Siding Gutters,5370 Rubbish Hauling,5373 Sealcating,5380 Snow Removal,5390 Tree Services, Professional Directory';
+
+  return getClassifiedsPretty($category);
 }
 
 /*************************/
+//Get ALL RANDOM Classifieds
+/*Could be depreciated after removal of iFrames? (7/12/23)
 add_shortcode('randomClassifieds','getRandomClassifieds');
-
 function getRandomClassifieds() {
   $type='classified';
   $args = array(
@@ -287,76 +236,43 @@ function getRandomClassifieds() {
   );
   return getClassifieds($args);
 }
+*/
 
+//Get ALL Classifieds
 add_shortcode('allClassifiedsPretty','getAllClassifiedsPretty');
-
 function getAllClassifiedsPretty() {
-  $type='classified';
-  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-  $args = array(
-    'posts_per_page' => 24,
-    'paged' => $paged,
-    'post_status' => 'publish',
-    'post_type' => $type,
-    'meta_key' => 'display_ad',
-    'orderby' => 'meta_value_num',
-    'order' => 'DESC'
-  );
-  return getClassifiedsPretty($args);
+  $category = 'all'; //'all' is a bypass to not include a category name, should only be used by this function!
+
+  return getClassifiedsPretty($category);
 }
 
+//Real Estate
 add_shortcode('classifiedsRealEstate','getClassifiedsRealEstate');
-
 function getClassifiedsRealEstate() {
-  $type='classified';
-  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-  $args = array(
-    'posts_per_page' => 24,
-    'paged' => $paged,
-    'category_name' => '3505 Commercial Sale,3515 Homes For Sale,3545 Property Auction,3550 Real Estate Services,3572 Real Estate Wanted,3575 Community Open House,3590 RE Professionals Ad,3600 Miscellaneous',
-    //'category_in' => array(217,204,211,212,213,214,215,216),
-    'post_status' => 'publish',
-    'post_type' => $type
-  );
-  return getClassifiedsPretty($args);
+  $category = '3505 Commercial Sale,3515 Homes For Sale,3545 Property Auction,3550 Real Estate Services,3572 Real Estate Wanted,3575 Community Open House,3590 RE Professionals Ad,3600 Miscellaneous';
+
+  return getClassifiedsPretty($category);
 }
 
+//Rentals
 add_shortcode('classifiedsRentals','getClassifiedsRentals');
-
 function getClassifiedsRentals() {
-  $type='classified';
-  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-  $args = array(
-    'posts_per_page' => 24,
-    'paged' => $paged,
-    //'category_name' => '3005 Commercial Lease',
-    'category_name' => '3005 Commercial Lease,3040 Apartments,3045 Apt-House To Share,3055 Houses For Rent,3068 Rental Services,3070 Rooms for Rent,3075 Seasonal Rentals,3095 Wanted to Rent',
-    //'category_in' => array(188,194,186,202,195,218,219,220),
-    'post_status' => 'publish',
-    'post_type' => $type
-  );
-  return getClassifiedsPretty($args);
+  $category = '3005 Commercial Lease,3040 Apartments,3045 Apt-House To Share,3055 Houses For Rent,3068 Rental Services,3070 Rooms for Rent,3075 Seasonal Rentals,3095 Wanted to Rent';
+
+  return getClassifiedsPretty($category);
 }
 
+//Help Wanted
 add_shortcode('classifiedsHelpWanted','getClassifiedsHelpWanted');
-
 function getClassifiedsHelpWanted() {
-  $type='classified';
-  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-  $args = array(
-    'posts_per_page' => 24,
-    'paged' => $paged,
-    'category_name' => 'Help Wanted,2000 Education,2005 General Help,2030 Positions Wanted,2055 Schools Instruction,2065 Social Services',
-    //'category_in' => array(207,181,208,209,210),
-    'post_status' => 'publish',
-    'post_type' => $type
-  );
-  return getClassifiedsPretty($args);
+  $category = 'Help Wanted,2000 Education,2005 General Help,2030 Positions Wanted,2055 Schools Instruction,2065 Social Services';
+
+  return getClassifiedsPretty($category);
 }
-function getClassifiedsPretty($args){
+
+function getClassifiedsPretty($category){
   ob_start();
 ?>
-<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clamp-js/0.7.0/clamp.min.js" integrity="sha512-Zf7q41OZ49XVIFrkbCVLkBEklVxQv4sVdMGnCwL9bfuCfA862QmAJSU61yrcrMwze7Ij7oUXpQVoUXmftBfk0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
   $(document).ready(function(){
@@ -372,11 +288,36 @@ function getClassifiedsPretty($args){
 </script>
 <div class="classifiedWrapperOuter">
 <?php
-
  // print_r($args);
   ?>
   <div class="classifiedWrapper">
   <?php
+    $postsPerPage = 15;
+    $type = 'classified';
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+    //If category is equal to all, create the arguements without a category_name to get all classifieds
+    if ($category != 'all') {
+      $args = array(
+        'posts_per_page' => $postsPerPage,
+        'paged' => $paged,
+        'category_name' => $category,
+        'post_status' => 'publish',
+        'post_type' => $type,
+        'meta_key' => 'display_ad',
+        'orderby' => 'meta_value_num',
+        'order' => 'DESC'
+        );
+    } else {
+        $args = array(
+          'posts_per_page' => $postsPerPage,
+          'paged' => $paged,
+          'post_status' => 'publish',
+          'post_type' => $type,
+          'meta_key' => 'display_ad',
+          'orderby' => 'meta_value_num',
+          'order' => 'DESC'
+          );
+    }
 
       $cpt_query = new WP_Query($args);
       if ($cpt_query->have_posts())
@@ -392,18 +333,24 @@ function getClassifiedsPretty($args){
   ?>
 
  <div class="<?php echo $className;?>">
-   <a class="classified" href="<?php echo the_permalink();?>">
-     <?php
- if (strlen(get_the_content()))
- {
-   echo get_the_content();
- }
- else
- {
-   //echo "This is a display ad. Need the image<br>";
-   //the_post_thumbnail( array(150, 100), ['class' => 'prettyThumbnail', 'style' => 'float:left; margin-right: 25px;'] );
-   echo get_the_post_thumbnail(get_the_ID(),'medium');
- }
+   <a class="classified" rel="lightbox" href="<?php 
+   if (strlen(get_the_content())) {
+      echo the_permalink();
+   } else {
+      echo get_the_post_thumbnail_url();
+   }
+   ;?>">
+ <?php
+    if (strlen(get_the_content()))
+    {
+      echo get_the_content();
+    }
+    else
+    {
+      //echo "This is a display ad. Need the image<br>";
+      //the_post_thumbnail( array(150, 100), ['class' => 'prettyThumbnail', 'style' => 'float:left; margin-right: 25px;'] );
+      echo get_the_post_thumbnail(get_the_ID(),'medium');
+    }
  ?>
    </a>
    <br/>
@@ -439,11 +386,12 @@ $additional = $options['additional'];
 
 <?php
 }
+
+/* Depreciated after removal of iFrames?
 function getClassifieds($args){
   ob_start();
   $htmlText = '';
   $htmlText ='
-<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clamp-js/0.7.0/clamp.min.js" integrity="sha512-Zf7q41OZ49XVIFrkbCVLkBEklVxQv4sVdMGnCwL9bfuCfA862QmAJSU61yrcrMwze7Ij7oUXpQVoUXmftBfk0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
   $(document).ready(function(){
@@ -451,7 +399,7 @@ function getClassifieds($args){
     var arrayLength = clampable.length;
     for (var i = 0; i < arrayLength; i++) {
       $clamp(clampable[i], {
-        clamp:11
+        clamp: 11
       });
     }
     $( "#comments" ).remove();
@@ -460,6 +408,10 @@ function getClassifieds($args){
 <div class="classifiedWrapperOuter">';
 $htmlText=$htmlText.'
   <div class="classifiedWrapper">';
+
+
+
+
   $cpt_query = new WP_Query($args);
   if ($cpt_query->have_posts())
   {
@@ -501,3 +453,4 @@ ob_get_clean();
 
 return $htmlText;
 }
+*/
