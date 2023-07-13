@@ -249,7 +249,7 @@ function getAllClassifiedsPretty() {
 //Real Estate
 add_shortcode('classifiedsRealEstate','getClassifiedsRealEstate');
 function getClassifiedsRealEstate() {
-  $category = '3505 Commercial Sale,3515 Homes For Sale,3545 Property Auction,3550 Real Estate Services,3572 Real Estate Wanted,3575 Community Open House,3590 RE Professionals Ad,3600 Miscellaneous';
+  $category = '3505 Commercial Sale,3515 Homes For Sale,3545 Property Auction,3550 Real Estate Services,3572 Real Estate Wanted,3575 Community Open House,3590 RE Professionals Ad,3600 Miscellaneous, Real Estate';
 
   return getClassifiedsPretty($category);
 }
@@ -292,13 +292,12 @@ function getClassifiedsPretty($category){
   ?>
   <div class="classifiedWrapper">
   <?php
-    $postsPerPage = 15;
     $type = 'classified';
     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     //If category is equal to all, create the arguements without a category_name to get all classifieds
     if ($category != 'all') {
       $args = array(
-        'posts_per_page' => $postsPerPage,
+        'posts_per_page' => 15,
         'paged' => $paged,
         'category_name' => $category,
         'post_status' => 'publish',
@@ -309,7 +308,7 @@ function getClassifiedsPretty($category){
         );
     } else {
         $args = array(
-          'posts_per_page' => $postsPerPage,
+          'posts_per_page' => 21,
           'paged' => $paged,
           'post_status' => 'publish',
           'post_type' => $type,
@@ -359,8 +358,6 @@ function getClassifiedsPretty($category){
  <?php
     }
   }
-  //Display Header at the bottom - 6/23/23
-  displayHeader();
 ?>
 </div>
 </div>
@@ -370,18 +367,36 @@ function getClassifiedsPretty($category){
       <div class = "classifiedsNextButton"><?php next_posts_link( 'More &raquo;', $cpt_query->max_num_pages) ?></div>
     </div>
 </nav>
+<div class = 'classifiedInstructions'>
+  <?php displayHeader();
+  $options = get_option( 'vs_classified_plugin_options' );
+  $phone = $options['phone'];
+  $rate = $options['rate'];
+  $deadline = $options['deadline'];
+  $additional = $options['additional'];
+  ?>
+  <p><?php echo $phone;?></p>
+  <p><?php echo $rate;?></p>
+  <p><?php echo $deadline;?></p>
+  <?php
+  if (strlen($additional))
+  {
+    ?>
+      <p><strong><?php echo $additional;?></strong> </p>
+    <?php
+  }
+     ?>
+</div>
+
 
 <?php
 wp_reset_postdata();
 return ob_get_clean();
 }
+
 function displayHeader(){
 //  echo date("Y-m-d H:i:s");
-$options = get_option( 'vs_classified_plugin_options' );
-$phone = $options['phone'];
-$rate = $options['rate'];
-$deadline = $options['deadline'];
-$additional = $options['additional'];
+  
 ?>
 
 <?php

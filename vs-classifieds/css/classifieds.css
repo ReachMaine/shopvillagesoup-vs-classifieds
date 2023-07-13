@@ -83,4 +83,21 @@ nav .classifiedsNextButton a, nav .classifiedsPreviousButton a {
   align-items: stretch;
 }
 
+.classifiedInstructions {
+  background-color: #015aac;
+  color: white;
+  text-align: center;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: auto;
+  margin-top: 28px;
+  width: 92%;
+}
+.classifiedInstructions a {
+  text-decoration: none;
+  color: white;
+}
+
 /*# sourceMappingURL=classifieds.css.map */

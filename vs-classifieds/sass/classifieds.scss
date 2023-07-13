@@ -93,3 +93,22 @@ nav .classifiedsNextButton a, nav .classifiedsPreviousButton a {
 	display: flex;
 	align-items: stretch;
 }
+
+.classifiedInstructions {
+	background-color: $cc_blue;
+	color: white;
+	text-align: center;
+	padding-top: 32px;
+	padding-bottom: 32px;
+	padding-left: 16px;
+	padding-right: 16px;
+	margin:auto;
+	margin-top: 28px;
+	width: 92%;
+
+	a {
+		text-decoration: none;
+		color:white;
+	}
+}
+
