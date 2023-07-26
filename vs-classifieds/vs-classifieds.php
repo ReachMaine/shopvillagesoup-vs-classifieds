@@ -367,8 +367,19 @@ function getClassifiedsPretty($category){
       <div class = "classifiedsNextButton"><?php next_posts_link( 'More &raquo;', $cpt_query->max_num_pages) ?></div>
     </div>
 </nav>
-<div class = 'classifiedInstructions'>
-  <?php displayHeader();
+
+<?php
+wp_reset_postdata();
+return ob_get_clean();
+}
+
+//Classified Instructions
+add_shortcode('classifiedInstructions', 'displayClassifiedInstructions');
+function displayClassifiedInstructions() {
+  ob_start();
+  ?>
+  <div class = 'classifiedInstructions'>
+  <?php
   $options = get_option( 'vs_classified_plugin_options' );
   $phone = $options['phone'];
   $rate = $options['rate'];
@@ -387,19 +398,8 @@ function getClassifiedsPretty($category){
   }
      ?>
 </div>
-
-
 <?php
-wp_reset_postdata();
-return ob_get_clean();
-}
-
-function displayHeader(){
-//  echo date("Y-m-d H:i:s");
-  
-?>
-
-<?php
+  return ob_get_clean();
 }
 
 /* Depreciated after removal of iFrames?
