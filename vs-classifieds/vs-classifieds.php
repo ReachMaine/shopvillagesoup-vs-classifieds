@@ -323,11 +323,16 @@ function getClassifiedsPretty($category){
       {
         while ($cpt_query->have_posts())
         {
+          $ad_num = "";
           $cpt_query->the_post();
           if (strlen(get_the_content())){
             $className="classLinerAd";
           } else {
             $className ="classDisplayAd";
+          }
+          $ad_num = get_post_meta(get_the_id(),"gemstone_ad_number", true );
+          if ($ad_num) {
+            $className = $className." ".$ad_num;
           }
   ?>
 
