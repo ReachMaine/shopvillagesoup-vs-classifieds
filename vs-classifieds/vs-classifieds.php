@@ -249,7 +249,7 @@ function getAllClassifiedsPretty() {
 //Real Estate
 add_shortcode('classifiedsRealEstate','getClassifiedsRealEstate');
 function getClassifiedsRealEstate() {
-  $category = '3505 Commercial Sale,3515 Homes For Sale,3545 Property Auction,3550 Real Estate Services,3572 Real Estate Wanted,3575 Community Open House,3590 RE Professionals Ad,3600 Miscellaneous, Real Estate';
+  $category = '3505 Commercial Sale,3515 Homes For Sale,3545 Property Auction,3550 Real Estate Services,3572 Real Estate Wanted,3575 Community Open House,3590 RE Professionals Ad,3600 Miscellaneous, Real Estate,3525 Lots and Land Sale';
 
   return getClassifiedsPretty($category);
 }

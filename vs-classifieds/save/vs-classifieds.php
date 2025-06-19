@@ -113,7 +113,7 @@ function getClassifiedsRealEstate() {
   $args = array(
     'posts_per_page' => 24,
     'paged' => $paged,
-    'category_name' => '3505 Commercial Sale,3515 Homes For Sale,3545 Property Auction,3550 Real Estate Services,3572 Real Estate Wanted,3575 Community Open House,3590 RE Professionals Ad,3600 Miscellaneous',
+    'category_name' => '3505 Commercial Sale,3515 Homes For Sale,3545 Property Auction,3550 Real Estate Services,3572 Real Estate Wanted,3575 Community Open House,3590 RE Professionals Ad,3600 Miscellaneous,3525 Lots and Land Sale',
     //'category_in' => array(217,204,211,212,213,214,215,216),
     'post_status' => 'publish',
     'post_type' => $type
