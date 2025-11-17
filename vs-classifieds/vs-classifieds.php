@@ -257,7 +257,7 @@ function getClassifiedsRealEstate() {
 //Rentals
 add_shortcode('classifiedsRentals','getClassifiedsRentals');
 function getClassifiedsRentals() {
-  $category = '3005 Commercial Lease,3040 Apartments,3045 Apt-House To Share,3055 Houses For Rent,3068 Rental Services,3070 Rooms for Rent,3075 Seasonal Rentals,3095 Wanted to Rent';
+  $category = '3005 Commercial Lease,3040 Apartments,3045 Apt-House To Share,3055 Houses For Rent,3068 Rental Services,3070 Rooms for Rent,3075 Seasonal Rentals,3095 Wanted to Rent,3025 Office Space Rental';
 
   return getClassifiedsPretty($category);
 }
