@@ -199,7 +199,7 @@ function getClassifiedsYardSales() {
 //Public Notices
 add_shortcode('classifiedsPublicNotices','getClassifiedsPublicNotices');
 function getClassifiedsPublicNotices() {
-  $category = '1007 General Notices,1000 Public Notices,1001 Legal Notices';
+  $category = '1007 General Notices';
 
   return getClassifiedsPretty($category);
 }
@@ -268,6 +268,13 @@ function getClassifiedsHelpWanted() {
   $category = 'Help Wanted,2000 Education,2005 General Help,2030 Positions Wanted,2055 Schools Instruction,2065 Social Services';
 
   return getClassifiedsPretty($category);
+}
+// Public Notices
+// added March 26 by zig
+add_shortcode('classifiedsLegals','getClassifiedsLegals');
+function getClassifiedsLegals() {
+  $category = '1000 Public Notices, 1001 Legal Notices';
+    return getClassifiedsPretty($category);
 }
 
 function getClassifiedsPretty($category){
