@@ -276,7 +276,13 @@ function getClassifiedsLegals() {
   $category = '1000 Public Notices, 1001 Legal Notices';
     return getClassifiedsPretty($category);
 }
-
+// Public Notices
+// added March 26 by zig
+add_shortcode('classifiedsHiHC','getclassifiedsHiHC');
+function getclassifiedsHiHC() {
+  $category = 'Here in Hancock County';
+    return getClassifiedsPretty($category);
+}
 function getClassifiedsPretty($category){
   ob_start();
 ?>
